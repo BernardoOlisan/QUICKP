@@ -1,0 +1,187 @@
+<Home>
+    topic: topic
+    name_file: name_file
+
+
+    ##########################################################################
+    # The logo
+    MDCard:
+        size_hint: None, None
+        size: "283dp", "183dp"
+        pos_hint: {"x": .05, "y": .65}
+        elevation: 0
+        FitImage:
+            source: 'Images/Logo.png'
+
+
+    ##########################################################################
+    # languages selection
+    MDCheckbox:
+        id: check1
+        group: 'group'
+        size_hint: None, None
+        size: dp(48), dp(48)
+        pos_hint: {'x': .1, 'y': .55}
+        on_release: app.translate_es()
+    MDLabel:
+        text: 'es'
+        pos_hint: {'x': .22, 'y': .095}
+    MDCheckbox:
+        id: check2
+        group: 'group'
+        active: True
+        size_hint: None, None
+        size: dp(48), dp(48)
+        pos_hint: {'x': .3, 'y': .55}
+        on_release: app.translate_en()
+    MDLabel:
+        text: 'en'
+        pos_hint: {'x': .42, 'y': .095}
+
+
+    ####################################################################
+    # Internet Icons, Connected and Disconnected
+    MDIcon:
+        id: disconnect
+        icon: 'lan-disconnect'
+        opacity: 0
+        pos_hint: {"x": .8, "y": .12}
+    MDIcon:
+        id: connect
+        icon: 'lan-connect'
+        opacity: 0
+        pos_hint: {"x": .8, "y": .12}
+
+
+    ######################################################################
+    # the Text fields (Topic, name file, email adress)
+    MDTextFieldRound:
+        id: topic
+        pos_hint: {"x": .15, "y": .45}
+        size_hint: dp(.7), dp(.085)
+        icon_right: 'magnify'
+        hint_text: 'Enter a topic'
+        normal_color: [1, 1, 1, 1]
+        line_color: [0, 0, 0, 1]
+        opacity: 1
+        disabled: False
+        multiline: False
+        font_size: "20sp"
+    MDTextFieldRound:
+        id: name_file
+        pos_hint: {"x": .15, "y": .35}
+        size_hint: dp(.7), dp(.085)
+        icon_right: 'rename-box'
+        hint_text: 'Project Name'
+        normal_color: [1, 1, 1, 1]
+        line_color: [0, 0, 0, 1]
+        multiline: False
+        opacity: 1
+        disabled: False
+        font_size: "20sp"
+    MDTextFieldRound:
+        id: email
+        pos_hint: {"x": .15, "y": .25}
+        size_hint: dp(.7), dp(.085)
+        icon_right: 'email-edit'
+        hint_text: 'Email address'
+        normal_color: [1, 1, 1, 1]
+        line_color: [0, 0, 0, 1]
+        multiline: False
+        opacity: 1
+        disabled: False
+        font_size: "20sp"
+
+
+    #####################################################################
+    # The internet button and the label of no internet
+    MDIconButton:
+        id: internet_button
+        pos_hint: {"x": .425, "y": .120}
+        icon: "checkbox-intermediate"
+        user_font_size: "23sp"
+        opacity: 0
+        disabled: True
+        rotation_root_button: True
+        on_press: app.try_again()
+    MDLabel:
+        id: internet_label
+        text: 'No Internet Connection'
+        pos_hint: {'center_x': .75, 'y': -.3}
+        opacity: 0
+        theme_text_color: "Custom"
+        text_color: 120, 120, 120, 1
+
+
+    ######################################################################
+    # The Create button and the Back button
+    MDRectangleFlatButton:
+        id: create_button
+        text: ' Send'
+        font_size: "23sp"
+        pos_hint: {"x": .365, "y": .3}
+        text_color: 0, 0, 0, 1
+        md_bg_color: 0, 0, 0, .5
+        opacity: 0
+        disabled: True
+        on_press: app.send()
+    MDRectangleFlatButton:
+        id: back_button
+        text: 'Back'
+        font_size: "23sp"
+        pos_hint: {"x": .365, "y": .4}
+        text_color: 0, 0, 0, 1
+        md_bg_color: 0, 0, 0, .5
+        opacity: 0
+        disabled: True
+        on_press: app.Back()
+    MDLabel:
+        id: send_label
+        text: 'Successfully Send!'
+        pos_hint: {'center_x': .8, 'y': -.3}
+        opacity: 0
+        theme_text_color: "Custom"
+        text_color: 120, 120, 120, 1
+
+
+   #########################################################################
+   # the search topic button and label
+    MDIconButton:
+        id: search_button
+        pos_hint: {"x": .425, "y": .165}
+        icon: "file-document-box-search"
+        user_font_size: "23sp"
+        opacity: 1
+        disabled: False
+        rotation_root_button: True
+        on_press: app.Getting_data()
+    MDLabel:
+        id: search_label
+        text: 'Search'
+        opacity: 1
+        pos_hint: {"x": .425, "y": -.327}
+        theme_text_color: "Custom"
+        text_color: 0, 0, 0, .5
+
+
+    ########################################################################
+    # Floating action buttons (help button)
+    MDFloatingActionButton:
+        pos_hint: {"x": .8, "y": .02}
+        size_hint: dp(.15), dp(.08)
+        rotation_root_button: True
+        icon: 'help'
+        md_bg_color: app.theme_cls.primary_color
+        on_release: app.help_dialog()
+
+
+    #########################################################################
+    # Version label
+    MDLabel:
+        text: 'Version 1.0'
+        pos_hint: {'center_x': .57, 'y': -.47}
+        theme_text_color: "Custom"
+        text_color: 120, 120, 120, .6
+
+
+
